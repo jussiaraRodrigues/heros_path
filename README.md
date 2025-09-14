@@ -61,6 +61,7 @@ O que já foi feito:
 - Conectar o app ao backend na nuvem. (Outras tantas lagrimas foram gastas)
 - Implementar as funcionalidades de Criar e Ler hábitos.
 - Implementar a funcionalidade de Atualizar o status de um hábito.
-- Implementar a funcionalidade de Editar e Deletar um hábito. (ESTOU FAZENDO)
+- Implementar a funcionalidade de Editar e Deletar um hábito.
+- Proximo passo trabalha o front e programar 
 
 
