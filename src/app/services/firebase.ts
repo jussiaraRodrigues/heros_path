@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, collectionData, addDoc, doc, updateDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, addDoc, doc, updateDoc, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 export interface Quest {
@@ -36,4 +36,15 @@ export class Firebase {
     const questDocRef = doc(this.firestore, `habitos/${questId}`);
     return updateDoc(questDocRef, { completed: newStatus });
   }
+
+    deleteQuest(questId: string) {
+    const questDocRef = doc(this.firestore, `habitos/${questId}`);
+    return deleteDoc(questDocRef);
+  }
+
+  updateQuest(questId: string, data: Partial<Quest>) {
+    const questDocRef = doc(this.firestore, `habitos/${questId}`);
+    return updateDoc(questDocRef, data);
+  }
+
 }

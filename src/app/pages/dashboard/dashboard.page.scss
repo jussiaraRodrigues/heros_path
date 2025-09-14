@@ -9,6 +9,7 @@ ion-list {
   border-radius: 12px;
   margin-bottom: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0, 0.1);
+  z-index: 2;
 }
 
 .streak-counter {
@@ -32,10 +33,61 @@ ion-list {
   }
 }
 
-// 👇 REGRA MOVIDA PARA FORA E CORRIGIDA 👇
 .fab-container {
   position: fixed;
   bottom: 140px;
   right: 85px;
   z-index: 999;
+}
+
+ion-item-option {
+  background: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+#edit-option ion-item-option {
+  &::part(native) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px 0px 0px 15px;
+    margin: 3px;
+    padding: 0;
+    width: 40px;
+    height: 60px;
+    background: var(--ion-color-tertiary); 
+    z-index: 1;
+    position: relative;
+    top: 1%;
+    left: 15%;
+  }
+
+  ion-icon {
+    font-size: 28px;
+    color: white;
+  }
+}
+
+#delete-option ion-item-option {
+  &::part(native) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 15px 15px 0px; 
+    margin: 3px;
+    padding: 0;
+    width: 40px;
+    height: 60px;
+    background: var(--ion-color-danger);
+    z-index: 1;
+    position: relative;
+    top: 1%;
+    right: 15%;
+  }
+
+  ion-icon {
+    font-size: 28px;
+    color: white;
+  }
 }

@@ -1,6 +1,5 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title class="ion-text-center">Minhas Quests</ion-title>
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary"> <ion-title class="ion-text-center">Minhas Quests</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,32 +7,44 @@
 
   <div *ngIf="quests$ | async as quests">
     <ion-list>
-      <ion-item *ngFor="let quest of quests" class="quest-item" [class.completed]="quest.completed">
-        
-        <ion-icon [name]="quest.icone" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h2>{{ quest.nome }}</h2>
-          <p class="streak-counter">
-            <ion-icon name="flame-outline" color="warning"></ion-icon>
-            {{ quest.streakAtual }} dias seguidos
-          </p>
-        </ion-label>
-        <ion-button 
-          slot="end" 
-          fill="clear" 
-          (click)="completeQuest(quest)">
-          <ion-icon 
-            slot="icon-only" 
-            [name]="quest.completed ? 'checkmark-circle' : 'ellipse-outline'"
-            [color]="quest.completed ? 'success' : 'medium'">
-          </ion-icon>
-        </ion-button>
-        
-      </ion-item>
-    </ion-list>
+      
+      <ion-item-sliding *ngFor="let quest of quests">
+
+        <ion-item class="quest-item" [class.completed]="quest.completed">
+          <ion-icon [name]="quest.icone" slot="start" color="primary"></ion-icon>
+          <ion-label>
+            <h2>{{ quest.nome }}</h2>
+            <p class="streak-counter">
+              <ion-icon name="flame-outline" color="warning"></ion-icon>
+              {{ quest.streakAtual }} dias seguidos
+            </p>
+          </ion-label>
+
+          <ion-button   slot="end"  fill="clear"  (click)="completeQuest(quest)">
+            <ion-icon 
+              slot="icon-only" 
+              [name]="quest.completed ? 'checkmark-circle' : 'ellipse-outline'"
+              [color]="quest.completed ? 'success' : 'medium'">
+            </ion-icon>
+          </ion-button>
+        </ion-item>
+
+        <ion-item-options id="edit-option" side="start">
+          <ion-item-option color="tertiary" (click)="openEditForm(quest)">
+            <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+
+        <ion-item-options id="delete-option" side="end">
+          <ion-item-option color="danger" (click)="deleteQuest(quest.id!)">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+
+      </ion-item-sliding> </ion-list>
   </div>
-   
-<div class="fab-container">
+    
+  <div class="fab-container">
     <ion-fab>
       <ion-fab-button (click)="openQuestForm()">
         <ion-icon name="add-outline"></ion-icon>

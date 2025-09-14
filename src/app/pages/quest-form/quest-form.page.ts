@@ -1,44 +1,40 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-// 👇 1. Importe os componentes que vamos usar no formulário
-import { 
-  IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonIcon, IonItem, IonInput, ModalController 
-} from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonIcon, IonItem, IonInput, ModalController } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { closeCircleOutline, checkmarkCircleOutline } from 'ionicons/icons';
+import { Quest } from '../../services/firebase';
 
 @Component({
   selector: 'app-quest-form',      // <- CORRIGIDO
   templateUrl: './quest-form.page.html', // <- CORRIGIDO
   styleUrls: ['./quest-form.page.scss'],   // <- CORRIGIDO
   standalone: true,
-  // 👇 2. Adicione os novos componentes à lista de imports
-  imports: [
-    IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,
-    IonButtons, IonButton, IonIcon, IonItem, IonInput
-  ]
-})
-export class QuestFormPage { // <- CORRIGIDO
+  imports: [ IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButtons, IonButton, IonIcon, IonItem, IonInput ]})
 
-  // 3. Injeta o ModalController para podermos fechar a "janelinha"
+  export class QuestFormPage implements OnInit { 
+
+    @Input() questToEdit?: Quest;
+
   private modalCtrl = inject(ModalController);
-  
-  questName: string = ''; // Variável para guardar o nome da quest
+  questName: string = ''; 
 
   constructor() {
     addIcons({ closeCircleOutline, checkmarkCircleOutline });
   }
 
-  // Função para o botão "Cancelar"
+  ngOnInit() {
+    if (this.questToEdit) {
+      this.questName = this.questToEdit.nome;
+    }
+  }
+
   cancel() {
-    // A função 'dismiss' fecha o modal. 'role: cancel' nos diz que foi cancelado.
     return this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  // Função para o botão "Salvar"
   confirm() {
-    // A função 'dismiss' fecha o modal, enviando os dados de volta.
     return this.modalCtrl.dismiss(this.questName, 'confirm');
   }
 }
