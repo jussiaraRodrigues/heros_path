@@ -1,0 +1,65 @@
+/* src/app/components/tabs/tabs.component.scss - CONTROLE TOTAL */
+
+:host {
+  --button-size: 60px;
+  --tab-bar-height: 40px;
+}
+
+// O conteúdo da página
+ion-router-outlet {
+  --padding-bottom: calc(var(--tab-bar-height) + 10px);
+}
+
+// Nossa nova barra customizada
+.custom-tab-bar {
+  position: fixed;
+  bottom: 15px; // Margem de baixo
+  left: 16px;
+  right: 16px;
+  
+  height: var(--tab-bar-height);
+  background: white;
+  border-radius: 0px 0px 80px 80px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+
+  // Alinhamento dos botões
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+// Estilo dos botões laterais
+.tab-button {
+  --background: transparent;
+  --background-hover: transparent;
+  --ripple-color: var(--ion-color-primary-tint);
+  width: 60px; // Tamanho fixo para ajudar no alinhamento
+  
+  ion-icon {
+    font-size: 28px;
+    color: var(--ion-color-medium); // Cor padrão do ícone
+  }
+
+  // Estilo do botão quando a rota está ATIVA
+  &.active-link ion-icon {
+    color: var(--ion-color-primary); // Cor do ícone ativo
+  }
+}
+
+// O botão central flutuante
+#quest-button {
+  width: var(--button-size);
+  height: var(--button-size);
+  --border-radius: 50%;
+  --background: var(--ion-color-primary);
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+  // O truque para ele flutuar para cima, fora do flexbox
+  margin-bottom: 5px; 
+  
+  ion-icon {
+    font-size: 35px;
+    color: white;
+  }
+}

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Minhas Quests</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div *ngIf="quests$ | async as quests">
+    <ion-list>
+      <ion-item *ngFor="let quest of quests" class="quest-item" [class.completed]="quest.completed">
+        
+        <ion-icon [name]="quest.icone" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <h2>{{ quest.nome }}</h2>
+          <p class="streak-counter">
+            <ion-icon name="flame-outline" color="warning"></ion-icon>
+            {{ quest.streakAtual }} dias seguidos
+          </p>
+        </ion-label>
+        <ion-button 
+          slot="end" 
+          fill="clear" 
+          (click)="completeQuest(quest)">
+          <ion-icon 
+            slot="icon-only" 
+            [name]="quest.completed ? 'checkmark-circle' : 'ellipse-outline'"
+            [color]="quest.completed ? 'success' : 'medium'">
+          </ion-icon>
+        </ion-button>
+        
+      </ion-item>
+    </ion-list>
+  </div>
+   
+<div class="fab-container">
+    <ion-fab>
+      <ion-fab-button (click)="openQuestForm()">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+
+</ion-content>

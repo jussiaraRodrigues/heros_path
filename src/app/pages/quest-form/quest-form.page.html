@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Nova Quest</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()">
+        <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+  <ion-item>
+    <ion-input
+      label="Nome da Missão"
+      labelPlacement="floating"
+      placeholder="Ex: Ler 10 páginas"
+      [(ngModel)]="questName"
+    ></ion-input>
+  </ion-item>
+
+</ion-content>
