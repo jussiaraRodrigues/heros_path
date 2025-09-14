@@ -62,6 +62,6 @@ O que já foi feito:
 - Implementar as funcionalidades de Criar e Ler hábitos.
 - Implementar a funcionalidade de Atualizar o status de um hábito.
 - Implementar a funcionalidade de Editar e Deletar um hábito.
-- Proximo passo trabalha o front um pouco do fronto e adicionar mais opções na criação do habito
+- Proximo passo adicionar mais opções na criação do habito
 
 
