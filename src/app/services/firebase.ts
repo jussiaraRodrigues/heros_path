@@ -6,6 +6,7 @@ export interface Quest {
   id?: string;
   nome: string;
   icone: string;
+  anotacao?: string;
   streakAtual: number;
   completed?: boolean;
 }
@@ -22,11 +23,12 @@ export class Firebase {
     return collectionData(questsRef, { idField: 'id' }) as Observable<Quest[]>;
     }
 
-  addQuest(quest: { nome: string; icone: string; }) {
+  addQuest(quest: Partial<Quest>) {
     const questsRef = collection(this.firestore, 'habitos');
     return addDoc(questsRef, {
       nome: quest.nome,
       icone: quest.icone,
+      anotacao: quest.anotacao || '',
       streakAtual: 0,
       completed: false
     });

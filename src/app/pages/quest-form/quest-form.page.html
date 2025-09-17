@@ -17,42 +17,24 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  
-  <ion-item>
-    <ion-input
-      label="Título da Missão"
-      labelPlacement="floating"
-      placeholder="Ex: Ler 10 páginas"
-      [(ngModel)]="questName"
-    ></ion-input>
-  </ion-item>
-  
-
-
-  <ion-item>
-    <ion-input
-      label="Notas"
-      labelPlacement="floating"
-      placeholder="Ex: Ler 10 páginas"
-      [(ngModel)]="questName"
-    ></ion-input>
-  </ion-item>
+  <ion-list>
+    <ion-item>
+      <ion-input
+        [(ngModel)]="questData.nome"
+        label="Título da Quest"
+        labelPlacement="floating"
+        placeholder="Ex: Ler 10 páginas"
+      ></ion-input>
+    </ion-item>
 
     <ion-item>
-    <ion-input
-      label="Reiniciar Contador"
-      labelPlacement="floating"
-      placeholder="Ex: Ler 10 páginas"
-      [(ngModel)]="questName"
-    ></ion-input>
-  </ion-item>
-
-      <ion-item>
-    <ion-input
-      label="Reiniciar Contador"
-      labelPlacement="floating"
-      placeholder="Ex: Ler 10 páginas"
-      [(ngModel)]="questName"
-    ></ion-input>
-  </ion-item>
+      <ion-textarea
+        [(ngModel)]="questData.anotacao"
+        label="Notas"
+        labelPlacement="floating"
+        placeholder="Detalhes da sua missão..."
+        [autoGrow]="true"
+      ></ion-textarea>
+    </ion-item>
+  </ion-list>
 </ion-content>

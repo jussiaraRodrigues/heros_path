@@ -5,7 +5,7 @@ import { ModalController, IonContent, IonHeader, IonTitle, IonToolbar, IonList, 
 import { QuestFormPage } from '../quest-form/quest-form.page';
 import { addIcons } from 'ionicons';
 import { bookOutline, barbellOutline, checkmarkCircle, flameOutline, ellipseOutline, codeWorkingOutline, addOutline, pencilOutline, trashOutline } from 'ionicons/icons';
-import { Firebase, Quest } from 'src/app/services/firebase';
+import { Firebase, Quest } from 'src/app/services/firebase'; 
 import { Observable } from 'rxjs';
 
 @Component({
@@ -13,28 +13,11 @@ import { Observable } from 'rxjs';
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.scss'],
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
-    IonList,
-    IonItem,
-    IonIcon,
-    IonLabel,
-    IonButton,
-    IonFab,
-    IonFabButton,
-    IonItemSliding,
-    IonItemOptions,
-    IonItemOption
-  ],
+  imports: [ CommonModule, FormsModule, IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonIcon, IonLabel, IonButton, IonFab, IonFabButton, IonItemSliding, IonItemOptions, IonItemOption ],
 })
 export class DashboardPage {
 
-  private firebase = inject(Firebase);
+  private firebase = inject(Firebase); 
   private modalCtrl = inject(ModalController);
 
   public quests$: Observable<Quest[]>;
@@ -44,14 +27,10 @@ export class DashboardPage {
     addIcons({ bookOutline, barbellOutline, checkmarkCircle, flameOutline, codeWorkingOutline, ellipseOutline, trashOutline, pencilOutline, addOutline });
   }
 
- completeQuest(quest: Quest) {
-
+  completeQuest(quest: Quest) {
     if (quest.id) {
       const newStatus = !quest.completed;
-
       this.firebase.updateQuestStatus(quest.id, newStatus)
-        .then(() => {
-         })
         .catch(err => {
           console.error('ERRO: Firebase service retornou um erro.', err);
         });
@@ -64,13 +43,14 @@ export class DashboardPage {
     const modal = await this.modalCtrl.create({
       component: QuestFormPage,
     });
-
     await modal.present();
-
     const { data, role } = await modal.onWillDismiss();
     if (role === 'confirm') {
-      console.log('Nova quest para adicionar:', data);
-      const novaQuest = { nome: data, icone: 'book-outline' }; // Usando um ícone padrão por enquanto
+      const novaQuest = {
+        nome: data.nome,
+        anotacao: data.anotacao,
+        icone: data.icone || 'book-outline' 
+      };
       this.firebase.addQuest(novaQuest);
     }
   }
@@ -78,7 +58,7 @@ export class DashboardPage {
   deleteQuest(questId: string) {
     this.firebase.deleteQuest(questId)
     .then(() => {
-      console.log('Quest com ID "${questId}" deletada com sucesso!');
+      console.log(`Quest com ID "${questId}" deletada com sucesso!`);
     })
     .catch(err => {
       console.error('Erro ao deletar a quest:', err);
@@ -92,12 +72,10 @@ export class DashboardPage {
         questToEdit: quest
       }
     });
-
     await modal.present();
-    
     const { data, role } = await modal.onWillDismiss();
     if (role === 'confirm' && quest.id) {
-      this.firebase.updateQuest(quest.id, { nome: data });
+      this.firebase.updateQuest(quest.id, data);
     }
   }
 }
