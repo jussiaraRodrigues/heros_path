@@ -1,43 +1,47 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import {
-  IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton,
-  IonList, IonItem, IonInput, IonTextarea, IonIcon, ModalController
+  IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonList,
+  IonItem, IonInput, IonTextarea, ModalController, IonSelect, IonSelectOption, IonIcon
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import {
-  closeCircleOutline, checkmarkCircleOutline, bookOutline, barbellOutline, codeWorkingOutline, laptopOutline, walkOutline, waterOutline, leafOutline, bedOutline
-} from 'ionicons/icons';
 import { Quest } from '../../services/firebase';
+import {
+  closeCircleOutline, checkmarkCircleOutline, waterOutline, balloonOutline,
+  storefrontOutline, alarmOutline, beerOutline, libraryOutline, bicycleOutline,
+  bookOutline, calendarOutline, leafOutline, pawOutline, restaurantOutline,
+  medkitOutline, laptopOutline, airplaneOutline
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-quest-form',
   templateUrl: './quest-form.page.html',
   styleUrls: ['./quest-form.page.scss'],
   standalone: true,
+
   imports: [
-    CommonModule, FormsModule, IonContent, IonHeader, IonTitle, IonToolbar,
-    IonButtons, IonButton, IonList, IonItem, IonInput, IonTextarea, IonIcon
+    CommonModule, FormsModule, IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton,
+    IonList, IonItem, IonInput, IonTextarea, IonSelect, IonSelectOption, IonIcon
   ]
 })
 export class QuestFormPage implements OnInit {
 
   @Input() questToEdit?: Quest;
-
   private modalCtrl = inject(ModalController);
 
   questData = {
     nome: '',
     anotacao: '',
-    icone: 'book-outline' // Ícone padrão
+    icone: 'book-outline'
   };
-
-  availableIcons = ['book-outline', 'barbell-outline', 'code-working-outline', 'laptop-outline', 'walk-outline', 'water-outline', 'leaf-outline', 'bed-outline'];
 
   constructor() {
     addIcons({
-      closeCircleOutline, checkmarkCircleOutline, bookOutline, barbellOutline, codeWorkingOutline, laptopOutline, walkOutline, waterOutline, leafOutline, bedOutline
+      closeCircleOutline, checkmarkCircleOutline, waterOutline, balloonOutline,
+      storefrontOutline, alarmOutline, beerOutline, libraryOutline, bicycleOutline,
+      bookOutline, calendarOutline, leafOutline, pawOutline, restaurantOutline,
+      medkitOutline, laptopOutline, airplaneOutline
     });
   }
 

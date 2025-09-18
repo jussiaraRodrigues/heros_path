@@ -36,5 +36,29 @@
         [autoGrow]="true"
       ></ion-textarea>
     </ion-item>
+
+    <ion-item>
+      <ion-select
+        [(ngModel)]="questData.icone"
+        label="Ícone"
+        interface="popover"
+      >
+        <ion-select-option value="water-outline">Água</ion-select-option>
+        <ion-select-option value="balloon-outline">Comemoração</ion-select-option>
+        <ion-select-option value="storefront-outline">Compras</ion-select-option>
+        <ion-select-option value="alarm-outline">Despertar</ion-select-option>
+        <ion-select-option value="beer-outline">Entretenimento</ion-select-option>
+        <ion-select-option value="library-outline">Estudar</ion-select-option>
+        <ion-select-option value="bicycle-outline">Exercícios</ion-select-option>
+        <ion-select-option value="book-outline">Leitura</ion-select-option>
+        <ion-select-option value="calendar-outline">Lembrete</ion-select-option>
+        <ion-select-option value="leaf-outline">Limpeza</ion-select-option>
+        <ion-select-option value="paw-outline">Pet</ion-select-option>
+        <ion-select-option value="restaurant-outline">Refeição</ion-select-option>
+        <ion-select-option value="medkit-outline">Remédio</ion-select-option>
+        <ion-select-option value="laptop-outline">Trabalhar</ion-select-option>
+        <ion-select-option value="airplane-outline">Viagens</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-list>
 </ion-content>
