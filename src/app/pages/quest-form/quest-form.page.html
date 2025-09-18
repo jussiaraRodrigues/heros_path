@@ -28,16 +28,15 @@
     </ion-item>
 
     <ion-item>
-      <ion-textarea
+      <ion-input
         [(ngModel)]="questData.anotacao"
         label="Notas"
         labelPlacement="floating"
         placeholder="Detalhes da sua missão..."
-        [autoGrow]="true"
-      ></ion-textarea>
+      ></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item> 
       <ion-select
         [(ngModel)]="questData.icone"
         label="Ícone"

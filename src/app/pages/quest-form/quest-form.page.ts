@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
   IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonList,
-  IonItem, IonInput, IonTextarea, ModalController, IonSelect, IonSelectOption, IonIcon
+  IonItem, IonInput, ModalController, IonSelect, IonSelectOption, IonIcon
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { Quest } from '../../services/firebase';
@@ -22,7 +22,7 @@ import {
 
   imports: [
     CommonModule, FormsModule, IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton,
-    IonList, IonItem, IonInput, IonTextarea, IonSelect, IonSelectOption, IonIcon
+    IonList, IonItem, IonInput, IonSelect, IonSelectOption, IonIcon
   ]
 })
 export class QuestFormPage implements OnInit {
