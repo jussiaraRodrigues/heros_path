@@ -10,12 +10,12 @@
       
       <ion-item-sliding *ngFor="let quest of quests">
 
-        <ion-item class="quest-item" [class.completed]="quest.completed">
+        <ion-item class="quest-item" [class.completed]="quest.completed" [class.has-notes]="quest.anotacao">
           <ion-icon [name]="quest.icone" slot="start" color="primary"></ion-icon>
           <ion-label>
             <h2>{{ quest.nome }}</h2>
             <p class="streakcounter">{{ quest.anotacao }}</p>
-            <p class="streakcounter">-
+            <p class="streakcounter">
               <ion-icon name="flame-outline" color="warning"></ion-icon>
               {{ quest.streakAtual }} dias seguidos
             </p>
