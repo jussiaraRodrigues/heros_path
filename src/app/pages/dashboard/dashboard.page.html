@@ -14,7 +14,8 @@
           <ion-icon [name]="quest.icone" slot="start" color="primary"></ion-icon>
           <ion-label>
             <h2>{{ quest.nome }}</h2>
-            <p class="streak-counter">
+            <p class="streakcounter">{{ quest.anotacao }}</p>
+            <p class="streakcounter">-
               <ion-icon name="flame-outline" color="warning"></ion-icon>
               {{ quest.streakAtual }} dias seguidos
             </p>
